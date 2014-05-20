@@ -1,7 +1,7 @@
 ng-roles
 =============================
 
-Access control library for angular applications
+Access control library for angular applications highly inspired by node-roles.
 
 `bower install ng-roles --save`
 
