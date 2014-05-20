@@ -16,7 +16,6 @@ module.exports = function (grunt) {
                     files: [
                         'bower_components/angular/angular.js',
                         'bower_components/angular-mocks/angular-mocks.js',
-                        'bower_components/ngstorage/ngStorage.js',
                         'ng-roles.min.js',
                         'ng-roles.test.js'
                     ]
