@@ -56,40 +56,52 @@ You could do this all in the application constructor:
 A profile is a way of defining a set of permissions that someone or something (that has that profile
 associated) can use to access somewhere or something. Confused?
 
+```javascript
     var guestProfile = ngRoles.addProfile('guest'),
         managerProfile = ngRoles.addProfile('manager');
 
     guestProfile.addRoles("myapp.view");
     managerProfile.addRoles("myapp.*"); // this is auto-updated if MyApp changes roles
+```
 
 Just like in the Application constructor, this could be defined with less calls:
 
+```javascript
     var guestProfile = ngRoles.addProfile('guest', [ 'myapp.view' ]),
         managerProfile = ngRoles.addProfile('manager', 'myapp.*');
+```
 
 ### Testing roles
 
 Now that you have your applications and profiles defined, it's simple to test roles. Imagine you have
 a user that you assign the profile called "guest". You can test for a specific permission like this:
 
+```javascript
     // return true
     console.log('Guest has myapp.view role?', guestProfile.hasRoles('myapp.view'));
+```
 
 If you don't assign the profiles and applications to a variable, you can retrieve them using the `roles`.
 
+```javascript
     // return true
     console.log('Guest has myapp.view role?', roles.getProfile('guest').hasRoles('myapp.view'));
+```
 
 Just like adding roles, you can also test if a profile has more than one role.
 
+```javascript
     // return true
     console.log('Manager has myapp.view/create role?', managerProfile.hasRoles('myapp.view', 'myapp.create'));
+```
 
 If any of the roles is not assigned to a profile, it woule return `false`. If you just want to check for
 at least one role, you can use the alternative .hasAnyRoles.
 
+```javascript
     // return true
     console.log('Guest has myapp.view/create role?', guestProfile.hasAnyRoles('myapp.view', 'myapp.create'));
+```
 
 ===========================
 
