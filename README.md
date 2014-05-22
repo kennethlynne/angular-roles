@@ -31,25 +31,27 @@ An application can be your entire application or an application module, it's you
 roles into several applications (modules) or have all roles in one big application. To create an
 application you just have to define a name.
 
-    var myApp = ngRoles.addApplication('appWithRoles');
+```javascript
+var myApp = ngRoles.addApplication('appWithRoles');
+```
 
 You can then add and remove roles from it.
 
 ```javascript
-    myApp.addRoles('create')
-         .addRoles('remove')
-         .addRoles('view');
-         
-    // or add them all at once
-    myApp.addRoles('create', 'remove', 'view', 'list');
-    
-    // you can remove the same way
-    myApp.removeRoles('list');
+myApp.addRoles('create')
+     .addRoles('remove')
+     .addRoles('view');
+     
+// or add them all at once
+myApp.addRoles('create', 'remove', 'view', 'list');
+
+// you can remove the same way
+myApp.removeRoles('list');
 ```
 
 You could do this all in the application constructor:
 ```javascript
-    var myApp = ngRoles.addApplication('appWithRoles', [ 'create', 'remove', 'view' ]);
+var myApp = ngRoles.addApplication('appWithRoles', [ 'create', 'remove', 'view' ]);
 ```
 ### Creating a profile
 
@@ -57,18 +59,18 @@ A profile is a way of defining a set of permissions that someone or something (t
 associated) can use to access somewhere or something. Confused?
 
 ```javascript
-    var guestProfile = ngRoles.addProfile('guest'),
-        managerProfile = ngRoles.addProfile('manager');
+var guestProfile = ngRoles.addProfile('guest'),
+    managerProfile = ngRoles.addProfile('manager');
 
-    guestProfile.addRoles("myapp.view");
-    managerProfile.addRoles("myapp.*"); // this is auto-updated if MyApp changes roles
+guestProfile.addRoles("myapp.view");
+managerProfile.addRoles("myapp.*"); // this is auto-updated if MyApp changes roles
 ```
 
 Just like in the Application constructor, this could be defined with less calls:
 
 ```javascript
-    var guestProfile = ngRoles.addProfile('guest', [ 'myapp.view' ]),
-        managerProfile = ngRoles.addProfile('manager', 'myapp.*');
+var guestProfile = ngRoles.addProfile('guest', [ 'myapp.view' ]),
+    managerProfile = ngRoles.addProfile('manager', 'myapp.*');
 ```
 
 ### Testing roles
@@ -77,30 +79,30 @@ Now that you have your applications and profiles defined, it's simple to test ro
 a user that you assign the profile called "guest". You can test for a specific permission like this:
 
 ```javascript
-    // return true
-    console.log('Guest has myapp.view role?', guestProfile.hasRoles('myapp.view'));
+// return true
+console.log('Guest has myapp.view role?', guestProfile.hasRoles('myapp.view'));
 ```
 
 If you don't assign the profiles and applications to a variable, you can retrieve them using the `roles`.
 
 ```javascript
-    // return true
-    console.log('Guest has myapp.view role?', roles.getProfile('guest').hasRoles('myapp.view'));
+// return true
+console.log('Guest has myapp.view role?', roles.getProfile('guest').hasRoles('myapp.view'));
 ```
 
 Just like adding roles, you can also test if a profile has more than one role.
 
 ```javascript
-    // return true
-    console.log('Manager has myapp.view/create role?', managerProfile.hasRoles('myapp.view', 'myapp.create'));
+// return true
+console.log('Manager has myapp.view/create role?', managerProfile.hasRoles('myapp.view', 'myapp.create'));
 ```
 
 If any of the roles is not assigned to a profile, it woule return `false`. If you just want to check for
 at least one role, you can use the alternative .hasAnyRoles.
 
 ```javascript
-    // return true
-    console.log('Guest has myapp.view/create role?', guestProfile.hasAnyRoles('myapp.view', 'myapp.create'));
+// return true
+console.log('Guest has myapp.view/create role?', guestProfile.hasAnyRoles('myapp.view', 'myapp.create'));
 ```
 
 ===========================
