@@ -22,7 +22,7 @@ You can expose the current users profile on $rootScope.
 Then you are able to hide elements based on the current users permissions.
 
 ```html
-<button ng-click="delete()" ng-show="userProfile.hasRoles('users.delete')">Delete something<button>
+<button ng-click="delete()" ng-show="userProfile.hasRoles('users.delete')">Delete user<button>
 ```
 
 ### Creating an application
@@ -31,22 +31,26 @@ An application can be your entire application or an application module, it's you
 roles into several applications (modules) or have all roles in one big application. To create an
 application you just have to define a name.
 
-    var myApp = ngRoles.addApplication("myapp");
+    var myApp = ngRoles.addApplication('appWithRoles');
 
 You can then add and remove roles from it.
 
+```javascript
     myApp.addRoles('create')
          .addRoles('remove')
          .addRoles('view');
+         
     // or add them all at once
     myApp.addRoles('create', 'remove', 'view', 'list');
+    
     // you can remove the same way
     myApp.removeRoles('list');
+```
 
 You could do this all in the application constructor:
-
-    var myApp = ngRoles.addApplication('myapp', [ 'create', 'remove', 'view' ]);
-
+```javascript
+    var myApp = ngRoles.addApplication('appWithRoles', [ 'create', 'remove', 'view' ]);
+```
 ### Creating a profile
 
 A profile is a way of defining a set of permissions that someone or something (that has that profile
