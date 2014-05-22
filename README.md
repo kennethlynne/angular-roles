@@ -1,4 +1,4 @@
-ng-roles
+ng-roles [![Build Status](https://travis-ci.org/kennethlynne/angular-roles.svg?branch=master)](https://travis-ci.org/kennethlynne/angular-roles)
 =============================
 
 Access control library for angular applications highly inspired by [node-roles](https://github.com/dresende/node-roles).
