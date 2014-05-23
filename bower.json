@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "ng-roles",
   "description": "Access control library for angular applications",
   "license": "MIT",

@@ -27,7 +27,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         cwd: './',
-                        src: 'ng-roles..0.0.3.js',
+                        src: 'ng-roles.0.0.3.js',
                         dest: 'ng-roles.0.0.3.min.js'
                     }
                 ]
