@@ -1,4 +1,4 @@
-ng-roles [![Build Status](https://travis-ci.org/kennethlynne/angular-roles.svg?branch=master)](https://travis-ci.org/kennethlynne/angular-roles)
+ng-roles
 =============================
 
 Access control library for angular applications highly inspired by [node-roles](https://github.com/dresende/node-roles).
@@ -109,7 +109,7 @@ console.log('Guest has myapp.view/create role?', guestProfile.hasAnyRoles('myapp
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Kenneth Lynne and contributors
+Copyright (c) 2014 Kenneth Lynne, Mohamed S.Zaghloul and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
