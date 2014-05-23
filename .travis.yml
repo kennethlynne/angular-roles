@@ -1,3 +1,4 @@
 before_script:
   - npm install -g grunt
-  - grunt test
+
+script: grunt
