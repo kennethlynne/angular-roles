@@ -79,10 +79,10 @@ Now that you have your applications and profiles defined, it's simple to test ro
 a user that you assign the profile called "guest". You can test for a specific permission like this:
 
 ```javascript
-   it('Guest has myapp.view role', function () {
-        guestProfile.addRoles("myapp.view");
-        expect(guestProfile.hasRoles("myapp.view")).toBeTruthy();
-    });
+it('Guest has myapp.view role', function () {
+    guestProfile.addRoles("myapp.view");
+    expect(guestProfile.hasRoles("myapp.view")).toBeTruthy();
+});
 ```
 
 If you don't assign the profiles and applications to a variable, you can retrieve them using the `roles`.
