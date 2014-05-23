@@ -88,30 +88,29 @@ a user that you assign the profile called "guest". You can test for a specific p
 If you don't assign the profiles and applications to a variable, you can retrieve them using the `roles`.
 
 ```javascript
-  it('Manager has myapp.view/create role', function () {
-        managerProfile.addRoles("myapp.*");
-        expect(ngRoles.getProfile("manager").hasRoles("myapp.view")).toBeTruthy();
-    });
+it('Manager has myapp.view/create role', function () {
+    managerProfile.addRoles("myapp.*");
+    expect(ngRoles.getProfile("manager").hasRoles("myapp.view")).toBeTruthy();
+});
 ```
 
 Just like adding roles, you can also test if a profile has more than one role.
 
 ```javascript
-  it('Manager has myapp.view/create role', function () {
-        managerProfile.addRoles("myapp.*");
-        expect(ngRoles.getProfile("manager").hasRoles("myapp.view", "myapp.create")).toBeTruthy();
-    });
+it('Manager has myapp.view/create role', function () {
+    managerProfile.addRoles("myapp.*");
+    expect(ngRoles.getProfile("manager").hasRoles("myapp.view", "myapp.create")).toBeTruthy();
+});
 ```
 
 If any of the roles is not assigned to a profile, it woule return `false`. If you just want to check for
 at least one role, you can use the alternative .hasAnyRoles.
 
 ```javascript
- it('Guest has any of myapp.view/create roles', function () {
-        guestProfile.addRoles("myapp.view");
-        expect(ngRoles.getProfile("guest").hasAnyRoles("myapp.view", "myapp.create")).toBeTruthy();
-    });
-
+it('Guest has any of myapp.view/create roles', function () {
+    guestProfile.addRoles("myapp.view");
+    expect(ngRoles.getProfile("guest").hasAnyRoles("myapp.view", "myapp.create")).toBeTruthy();
+});
 ```
 
 ===========================
