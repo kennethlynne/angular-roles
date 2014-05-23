@@ -8,4 +8,4 @@ before_script:
   - npm install -g bower
   - npm install -g karma
 
-script: grunt test
+script: grunt test --force
