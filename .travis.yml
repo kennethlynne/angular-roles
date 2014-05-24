@@ -3,9 +3,7 @@ node_js:
   - "0.11"
 
 before_script:
-  - npm install -g grunt-cli
+  - npm install -g grunt-cli bower karma
   - npm install
-  - npm install -g bower
-  - npm install -g karma
 
 script: grunt test --force
