@@ -1,4 +1,4 @@
-ng-roles ng-roles [![Build Status](https://travis-ci.org/kennethlynne/angular-roles.svg?branch=master)](https://travis-ci.org/kennethlynne/angular-roles)
+ng-roles [![Build Status](https://travis-ci.org/kennethlynne/angular-roles.svg?branch=master)](https://travis-ci.org/kennethlynne/angular-roles)
 =============================
 
 Angular port of [node-roles](https://github.com/dresende/node-roles). Original library by Diogo Resende.
