@@ -1,9 +1,9 @@
 {
-  "version": "0.0.0",
+  "version": "0.0.1",
   "name": "ng-roles",
   "description": "Access control for Angular applications",
   "license": "MIT",
-  "author": "Kennth Lynne <kenneth.lynne@gmail.com>, Mohamed S.Zaghloul<m.salahz86@gmail.com>",
+  "author": "Kennth Lynne <kenneth.lynne@gmail.com>, Mohamed S.Zaghloul <m.salahz86@gmail.com>",
   "ignore": [
     "**/.*",
     "node_modules",
