@@ -106,8 +106,8 @@ expect(ngRoles.getProfile("guest").hasAnyRoles("myapp.view", "myapp.create")).to
 ```
 
 # Contributors
-Kenneth Lynne
-Mohamed S. Zaghloul
+* Kenneth Lynne
+* Mohamed S. Zaghloul
 
 Original library by Diogo Resende
 
