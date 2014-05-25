@@ -1,7 +1,7 @@
-ng-roles [![Build Status](https://travis-ci.org/kennethlynne/angular-roles.svg?branch=master)](https://travis-ci.org/kennethlynne/angular-roles)
+ng-roles ng-roles [![Build Status](https://travis-ci.org/kennethlynne/angular-roles.svg?branch=master)](https://travis-ci.org/kennethlynne/angular-roles)
 =============================
 
-Access control library for angular applications highly inspired by [node-roles](https://github.com/dresende/node-roles).
+Angular port of [node-roles](https://github.com/dresende/node-roles). Original library by Diogo Resende.
 Manage application and profile roles in a simple manner. You can define your applications/modules and set a couple of roles (permissions). Then you can define profiles and add application roles to it. 
 
 # Installation
@@ -10,15 +10,15 @@ Manage application and profile roles in a simple manner. You can define your app
 # Usage
 To use Roles, just include it a dependandy.
 ```javascript
-  angular.module('appWithRoles', ['ng-roles']);
-  
-  angular.module('appWithRoles').controller('someCtrl', function($scope, ngRoles) {
-    //Your code...
-  });
+angular.module('appWithRoles', ['ng-roles']);
+
+angular.module('appWithRoles').controller('someCtrl', function($scope, ngRoles) {
+    //...
+});
 ```
 
 ## Use in views
-You can expose the current users profile on $rootScope.
+You can for example expose the current users profile on $rootScope.
 Then you are able to hide elements based on the current users permissions.
 
 ```html
@@ -79,37 +79,43 @@ Now that you have your applications and profiles defined, it's simple to test ro
 a user that you assign the profile called "guest". You can test for a specific permission like this:
 
 ```javascript
-// return true
-console.log('Guest has myapp.view role?', guestProfile.hasRoles('myapp.view'));
+guestProfile.addRoles("myapp.view");
+expect(guestProfile.hasRoles("myapp.view")).toBeTruthy();
 ```
 
 If you don't assign the profiles and applications to a variable, you can retrieve them using the `roles`.
 
 ```javascript
-// return true
-console.log('Guest has myapp.view role?', roles.getProfile('guest').hasRoles('myapp.view'));
+managerProfile.addRoles("myapp.*");
+expect(ngRoles.getProfile("manager").hasRoles("myapp.view")).toBeTruthy();
 ```
 
 Just like adding roles, you can also test if a profile has more than one role.
 
 ```javascript
-// return true
-console.log('Manager has myapp.view/create role?', managerProfile.hasRoles('myapp.view', 'myapp.create'));
+managerProfile.addRoles("myapp.*");
+expect(ngRoles.getProfile("manager").hasRoles("myapp.view", "myapp.create")).toBeTruthy();
 ```
 
 If any of the roles is not assigned to a profile, it woule return `false`. If you just want to check for
 at least one role, you can use the alternative .hasAnyRoles.
 
 ```javascript
-// return true
-console.log('Guest has myapp.view/create role?', guestProfile.hasAnyRoles('myapp.view', 'myapp.create'));
+guestProfile.addRoles("myapp.view");
+expect(ngRoles.getProfile("guest").hasAnyRoles("myapp.view", "myapp.create")).toBeTruthy();
 ```
+
+# Contributors
+Kenneth Lynne
+Mohamed S. Zaghloul
+
+Original library by Diogo Resende
 
 ===========================
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Kenneth Lynne and contributors
+Copyright (c) 2014 Diogo Resende, Kenneth Lynne and Mohamed S.Zaghloul
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -127,3 +133,5 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+

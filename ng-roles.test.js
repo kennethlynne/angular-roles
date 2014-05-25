@@ -1,51 +1,55 @@
 'use strict';
 
-describe('Directive: ng-roles', function () {
+describe('ng-roles', function () {
 
-    var accessControl;
+  var ngRoles, myApp, guestProfile, managerProfile;
 
-    beforeEach(function () {
+  beforeEach(function () {
 
-        module('ngRoles');
+    module('ngRoles');
 
-        inject(function (_accessControl_) {
-            accessControl = _accessControl_;
-        });
-
+    inject(function (_ngRoles_) {
+      ngRoles = _ngRoles_;
     });
 
-    it('should unset all data', function () {
-        accessControl.setPermissions(['troll']);
-        accessControl.setRoles(['admin', 'god']);
-        accessControl.unset();
-        expect(accessControl.getPermissions()).toEqual([]);
-        expect(accessControl.getRoles()).toEqual([]);
-    });
+    // create application (module)
+    myApp = ngRoles.addApplication('myapp', [ 'create', 'remove', 'view' ]);
 
-    it('should set the users permissions', function () {
-        accessControl.setPermissions(['troll']);
-        accessControl.setPermissions(['roll', 'eat', 'sleep']);
-        expect(accessControl.getPermissions()).toEqual(['roll', 'eat', 'sleep']);
-    });
+    // create profile
+    guestProfile = ngRoles.addProfile('guest');
 
-    it('should return the users right', function () {
-        accessControl.setPermissions(['roll', 'eat', 'sleep']);
-        expect(accessControl.can('wear socks')).toBeFalsy();
-        expect(accessControl.can('sleep')).toBeTruthy();
-    });
+    // create profile
+    managerProfile = ngRoles.addProfile('manager');
 
-    it('should set the users roles', function () {
-        accessControl.setRoles(['admin', 'god']);
-        accessControl.setRoles(['superadmin', 'god', 'washingmachine']);
-        expect(accessControl.getRoles()).toEqual(['superadmin', 'god', 'washingmachine']);
-    });
+  });
 
-    it('should return the users role', function () {
-        accessControl.setRoles(['superadmin', 'user']);
-        expect(accessControl.is('god')).toBeFalsy();
-        expect(accessControl.is('superadmin')).toBeTruthy();
-        expect(accessControl.is('user')).toBeTruthy();
+  describe('hasRoles', function () {
+    it('should test roles', function () {
+      guestProfile.addRoles('myapp.view');
+      managerProfile.addRoles('myapp.*');
+      myApp.addRoles('admin');
+
+      expect(guestProfile.hasRoles('myapp.view')).toBeTruthy();
+      expect(ngRoles.getProfile('guest').hasRoles('myapp.create')).toBeFalsy();
+      expect(ngRoles.getProfile('manager').hasRoles('myapp.view', 'myapp.create')).toBeTruthy();
+      expect(ngRoles.getProfile('manager').hasRoles('myapp.admin')).toBeTruthy();
     });
+  });
+
+  describe('hasAnyRoles', function () {
+      it('should test roles', function() {
+        guestProfile.addRoles('myapp.view');
+        expect(ngRoles.getProfile('guest').hasAnyRoles('myapp.view', 'myapp.create')).toBeTruthy();
+      });
+  });
+
+  describe('removeRoles', function () {
+      it('should remove roles', function() {
+        managerProfile.addRoles('myapp.*');
+        myApp.removeRoles('create');
+        expect(ngRoles.getProfile('manager').hasRoles('myapp.create')).toBeFalsy();
+      });
+  });
 
 });
 
