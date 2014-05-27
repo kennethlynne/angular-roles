@@ -5,7 +5,7 @@ Angular port of [node-roles](https://github.com/dresende/node-roles). Original l
 Manage application and profile roles in a simple manner. You can define your applications/modules and set a couple of roles (permissions). Then you can define profiles and add application roles to it. 
 
 # Installation
-`bower install ng-roles --save`
+`bower install angular-roles --save`
 
 # Usage
 To use Roles, just include it a dependandy.
