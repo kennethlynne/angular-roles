@@ -18,8 +18,8 @@ module.exports = function (config) {
         files: [
             'bower_components/angular/angular.js',
             'bower_components/angular-mocks/angular-mocks.js',
-            'ng-roles.src.js',
-            'ng-roles.test.js'
+            'angular-roles.src.js',
+            'angular-roles.test.js'
         ],
 
         // list of files / patterns to exclude

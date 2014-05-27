@@ -9,7 +9,7 @@ angular.module('ngRoles', [])
       return this;
     };
 
-    this.$get = ['$rootScope', function ngRoles($rootScope) {
+    this.$get = ['$rootScope', '$log', function ngRoles($rootScope, $log) {
       // VARIABLES
       var applications = {},
         profiles = {},
@@ -148,7 +148,7 @@ angular.module('ngRoles', [])
               try {
                 throw new Error("Application " + role[0] + " does not have " + role[1] + " role");
               } catch (err) {
-                console.error(err.message);
+                $log.error(err.message);
               }
             }
             if (this.roles.indexOf(role.join(APP_ROLE_SEPARATOR)) == -1) return false;
@@ -176,7 +176,7 @@ angular.module('ngRoles', [])
               try {
                 throw new Error("Application " + role[0] + " does not have " + role[1] + " role");
               } catch (err) {
-                console.log(err.message)
+                $log.log(err.message)
               }
             }
             if (this.roles.indexOf(role.join(APP_ROLE_SEPARATOR)) != -1) return true;
@@ -206,7 +206,7 @@ angular.module('ngRoles', [])
           var app_role = app + APP_ROLE_SEPARATOR + role;
           if (profile.roles.indexOf(app_role) == -1) {
             profile.roles.push(app_role);
-            console.log(app_role + ' role added to ' + profile.name + ' profile because it\'s own all ' + app + ' roles.');
+            $log.log(app_role + ' role added to ' + profile.name + ' profile because it\'s own all ' + app + ' roles.');
           }
         };
       };
@@ -215,7 +215,7 @@ angular.module('ngRoles', [])
           var app_role = app + APP_ROLE_SEPARATOR + role;
           if (profile.roles.indexOf(app_role) != -1) {
             profile.roles.splice(profile.roles.indexOf(app_role), 1);
-            console.log(app_role + ' role removed from ' + profile.name + ' profile because it\'s own all ' + app + ' roles only.');
+            $log.log(app_role + ' role removed from ' + profile.name + ' profile because it\'s own all ' + app + ' roles only.');
           }
         };
       };

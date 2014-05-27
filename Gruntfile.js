@@ -16,8 +16,8 @@ module.exports = function (grunt) {
           files: [
             'bower_components/angular/angular.js',
             'bower_components/angular-mocks/angular-mocks.js',
-            'ng-roles.src.js',
-            'ng-roles.test.js'
+            'angular-roles.src.js',
+            'angular-roles.test.js'
           ]
         }
       }
@@ -27,8 +27,8 @@ module.exports = function (grunt) {
         files: [
           {
             cwd: './',
-            src: 'ng-roles.src.js',
-            dest: 'ng-roles.min.js'
+            src: 'angular-roles.src.js',
+            dest: 'angular-roles.min.js'
           }
         ]
       }
@@ -47,8 +47,8 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          'ng-roles.min.js': [
-            'ng-roles.min.js'
+          'angular-roles.min.js': [
+            'angular-roles.min.js'
           ]
         }
       }
