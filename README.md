@@ -10,7 +10,7 @@ Manage application and profile roles in a simple manner. You can define your app
 # Usage
 To use Roles, just include it a dependandy.
 ```javascript
-angular.module('appWithRoles', ['ng-roles']);
+angular.module('appWithRoles', ['ngRoles']);
 
 angular.module('appWithRoles').controller('someCtrl', function($scope, ngRoles) {
     //...
